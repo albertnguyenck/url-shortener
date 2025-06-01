@@ -103,6 +103,7 @@ This project uses Java and Spring Boot. Follow these steps to set up your enviro
 
 ## Non-Functional Improvements (Work in Progress)
 
-- Implement caching for frequently accessed short URLs (e.g., using Redis)
-- Optimize database queries and add proper indexing
-- Collect and analyze usage statistics (e.g., count how many times each short URL is accessed)
+- [x] Implement caching for frequently accessed short URLs (e.g., using Redis)
+- [ ] Optimize database queries and add proper indexing
+- [ ] Collect and analyze usage statistics (e.g., count how many times each short URL is accessed)
+- [ ] Perform load testing to measure how many requests per second the service can handle

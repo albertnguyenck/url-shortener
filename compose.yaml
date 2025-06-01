@@ -10,6 +10,22 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
+    networks:
+      - url-shortener-net
+  redis:
+    image: 'redis:7-alpine'
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - url-shortener-net
 
 volumes:
   postgres_data:
+  redis_data:
+
+networks:
+  url-shortener-net:
+    driver: bridge

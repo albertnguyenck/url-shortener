@@ -3,6 +3,8 @@ package com.system.design.urlshortener.infrastructure.jdbc;
 import com.system.design.urlshortener.domain.entity.Url;
 import com.system.design.urlshortener.domain.repository.UrlRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CachePut;
 
 import java.util.Optional;
 
@@ -15,6 +17,7 @@ public class UrlRepositoryImpl implements UrlRepository {
     }
 
     @Override
+    @Cacheable(value = "shortUrlCache", key = "#shortUrl", unless = "#result == null")
     public Optional<Url> findByShortUrl(String shortUrl) {
         return jdbcRepo.findByShortUrl(shortUrl).map(UrlMapper::toDomain);
     }
@@ -25,6 +28,7 @@ public class UrlRepositoryImpl implements UrlRepository {
     }
 
     @Override
+    // @CachePut(value = "shortUrlCache", key = "#url.shortUrl")
     public Url save(Url url) {
         return UrlMapper.toDomain(jdbcRepo.save(UrlMapper.toEntity(url)));
     }

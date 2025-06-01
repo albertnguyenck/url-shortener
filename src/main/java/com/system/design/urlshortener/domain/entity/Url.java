@@ -1,5 +1,6 @@
 package com.system.design.urlshortener.domain.entity;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -18,8 +19,9 @@ public record Url(
         String shortUrl,
         String originalUrl,
         OffsetDateTime createdAt
-) {
-    // shortUrl must be alphanumeric and at least 6 characters (regex: ^[0-9a-zA-Z]{6,}$)
+) implements Serializable {
+
+    // shortUrl must be alphanumeric and at least 6 characters
     private static final Pattern SHORT_URL_PATTERN = Pattern.compile("^[0-9a-zA-Z]{6,}$");
 
     private static final Pattern URL_PATTERN = Pattern.compile("^(https?://).+");
