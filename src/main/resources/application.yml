@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: url-shortener
+  datasource:
+    url: jdbc:postgresql://localhost:5432/url-shortener
+    username: my-user
+    password: my-password
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+      platform: postgres
+  jackson:
+    time-zone: UTC
+
+# Docker Compose Postgres settings:
+# - Database: url-shortener
+# - Username: my-user
+# - Password: my-password
+# - Port: 5432
+# Make sure these match your compose.yaml

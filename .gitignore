@@ -1,0 +1,49 @@
+# Java & Gradle
+/build/
+/.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+.gradle/
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*.DS_Store
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test & Coverage
+/test-results/
+/reports/
+
+# Environment
+.env
+
+# Others
+*.class
+*.war
+*.jar
+*.tmp
+
+# Ignore generated sources
+/build/generated/
+
+# Ignore local database files
+*.h2.db
+*.mv.db
+
+# Ignore backup files
+*~
+
+# Ignore node_modules if present
+node_modules/
+
