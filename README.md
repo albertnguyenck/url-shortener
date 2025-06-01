@@ -101,3 +101,8 @@ This project uses Java and Spring Boot. Follow these steps to set up your enviro
 - **GET** `/{shortUrl}`
 - **Behavior:** Redirects (HTTP 302) to the original URL if found, otherwise returns 404.
 
+## Non-Functional Improvements (Work in Progress)
+
+- Implement caching for frequently accessed short URLs (e.g., using Redis)
+- Optimize database queries and add proper indexing
+- Collect and analyze usage statistics (e.g., count how many times each short URL is accessed)
