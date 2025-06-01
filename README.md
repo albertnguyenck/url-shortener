@@ -15,40 +15,6 @@ A simple and robust URL shortening service built with Java and Spring Boot.
 - Collision detection and resolution for short URLs
 - All timestamps are stored and returned in UTC
 
-## High Level Design
-
-The URL Shortener service is designed with a layered architecture for maintainability and scalability:
-
-```mermaid
-graph TD
-  A[Client] -->|Shorten URL Request| B[REST API (Presentation Layer)]
-  B -->|Business Logic| C[Application Layer]
-  C -->|Domain Models & Validation| D[Domain Layer]
-  C -->|Persistence| E[Infrastructure Layer]
-  E -->|JDBC/JPA| F[(PostgreSQL DB)]
-  A <-->|Redirect| B
-  B -->|Lookup Short URL| C
-  C -->|Fetch Original URL| E
-  E -->|Read| F
-```
-
-- **Presentation Layer:** Exposes RESTful APIs for URL shortening and redirection.
-- **Application Layer:** Handles business logic, such as generating short URLs, resolving collisions, and managing URL entities.
-- **Domain Layer:** Contains core domain models and validation logic.
-- **Infrastructure Layer:** Manages data persistence using a PostgreSQL database (via JDBC or JPA) and integrates with external systems.
-
-**Data Flow:**
-1. The client sends a request to shorten a URL via the REST API.
-2. The application layer generates a unique short URL, checks for collisions, and persists the mapping in the database.
-3. When a user accesses a short URL, the service looks up the original URL and redirects the user.
-
-**Persistence:**
-- URLs and their short URLs are stored in a PostgreSQL database.
-- Database migrations are managed with Flyway.
-
-**Deployment:**
-- The service can be run locally or in containers using Docker Compose (recommended for database setup).
-
 ## Environment Setup
 
 This project uses Java and Spring Boot. Follow these steps to set up your environment and run the application:
